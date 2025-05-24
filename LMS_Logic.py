@@ -27,8 +27,9 @@ class Book(Library):
         if fetch_author:
             author_ID = fetch_author.id
         else:
-            newAuthor = AuthorTable(name = self.author,booksID = 123)
+            newAuthor = AuthorTable(name = self.author,booksID = [BookTable(id = 123)])
             s.add(newAuthor)
+            author_ID = newAuthor.id
         newBook = BookTable(title = self.title, authorID = author_ID,publication_year = self.publication_year,num_copies = self.num_copies) #Add pub year and num copies
         s.add(newBook) 
         s.commit()
